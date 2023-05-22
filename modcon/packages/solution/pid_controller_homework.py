@@ -25,13 +25,13 @@ def PIDController(
         e_int:      current integral error (automatically becomes prev_int_y at next iteration).
     """
 
-    # Read PID gains from file
-    script_dir = os.path.dirname(__file__)
-    file_path = script_dir + "/GAINS.yaml"
+#     # Read PID gains from file
+#     script_dir = os.path.dirname(__file__)
+#     file_path = script_dir + "/GAINS.yaml"
 
-    with open(file_path) as f:
-        gains = yaml.full_load(f)
-        f.close()
+#     with open(file_path) as f:
+#         gains = yaml.full_load(f)
+#         f.close()
     
     kp = gains['kp']
     kd = gains['kd']
