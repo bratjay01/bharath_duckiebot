@@ -41,7 +41,7 @@ def PIDController(
 
     # controller coefficients
     Kp = 15
-    Ki = 1
+    Ki = 0.7
     Kd = 0.4
 
     # PID controller for omega

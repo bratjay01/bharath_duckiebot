@@ -25,35 +25,43 @@ def PIDController(
         e_int:      current integral error (automatically becomes prev_int_y at next iteration).
     """
 
-    # Read PID gains from file
-    script_dir = os.path.dirname(__file__)
-    file_path = script_dir + "/GAINS.yaml"
+#     # Read PID gains from file
+#     script_dir = os.path.dirname(__file__)
+#     file_path = script_dir + "/GAINS.yaml"
 
-    with open(file_path) as f:
-        gains = yaml.full_load(f)
-        f.close()
+#     with open(file_path) as f:
+#         gains = yaml.full_load(f)
+#         f.close()
     
-    kp = gains['kp']
-    kd = gains['kd']
-    ki = gains['ki']
+#     kp = gains['kp']
+#     kd = gains['kd']
+#     ki = gains['ki']
 
     # ------------- DEFINE YOUR PID FUNCTION BELOW ---------
-
+    
+    # Tracking error
     e = y_ref - y_hat
-    e_diff = (e - prev_e_y) / delta_t
+    # integral of the error
     e_int = prev_int_y + e * delta_t
+    
+    # anti-windup - preventing the integral error from growing too much
+    e_int = max(min(e_int,2),-2)
+    
+    # derivative of the error
+    e_diff = (e - prev_e_y) / delta_t
+   
 
     # controller coefficients
     Kp = 15
-    Ki = 1
-    Kd = 0.1
+    Ki = 0.7
+    Kd = 0.4
 
     # Compute control signals
-    omega = kp * e + kd * e_diff + ki * e_int
+    omega = kp * e + ki * e_int + kd * e_diff 
 
     # Update previous errors for the next iteration
-    prev_e_y = e
-    prev_int_y = e_int
+#     prev_e_y = e
+#     prev_int_y = e_int
 
 #   # Tracking error
 #     e = y_ref - y_hat
