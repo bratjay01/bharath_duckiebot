@@ -3,7 +3,7 @@ from typing import Tuple
 
 def DT_TOKEN() -> str:
     # TODO: change this to your duckietown token
-    dt_token = "PUT_YOUR_TOKEN_HERE"
+    dt_token = "dt1-3nT8KSoxVh4MnCdCQ4nG8PGiXGhcwfVz8JUM44GoEmkD2PE-43dzqWFnWd8KBa1yev1g3UKnzVxZkkTbfg7hajQaB4YjEa5VGzvMWZLhqCWwBjbRLv"
     return dt_token
 
 
@@ -16,7 +16,7 @@ def MODEL_NAME() -> str:
 def NUMBER_FRAMES_SKIPPED() -> int:
     # TODO: change this number to drop more frames
     # (must be a positive integer)
-    return 0
+    return 5
 
 
 def filter_by_classes(pred_class: int) -> bool:
