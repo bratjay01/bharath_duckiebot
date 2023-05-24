@@ -25,17 +25,17 @@ def PIDController(
         e_int:      current integral error (automatically becomes prev_int_y at next iteration).
     """
 
-#     # Read PID gains from file
-#     script_dir = os.path.dirname(__file__)
-#     file_path = script_dir + "/GAINS.yaml"
+    # Read PID gains from file
+    script_dir = os.path.dirname(__file__)
+    file_path = script_dir + "/GAINS.yaml"
 
-#     with open(file_path) as f:
-#         gains = yaml.full_load(f)
-#         f.close()
+    with open(file_path) as f:
+        gains = yaml.full_load(f)
+        f.close()
     
-#     kp = gains['kp']
-#     kd = gains['kd']
-#     ki = gains['ki']
+    kp = gains['kp']
+    kd = gains['kd']
+    ki = gains['ki']
 
     # ------------- DEFINE YOUR PID FUNCTION BELOW ---------
     
@@ -57,7 +57,7 @@ def PIDController(
     Kd = 0.4
 
     # Compute control signals
-    omega = kp * e + ki * e_int + kd * e_diff 
+    omega = Kp * e + Ki * e_int + Kd * e_diff 
 
     # Update previous errors for the next iteration
 #     prev_e_y = e
