@@ -40,9 +40,9 @@ def PIDController(
     e_der = (e - prev_e)/delta_t
 
     # controller coefficients
-    Kp = 15
-    Ki = 0.7
-    Kd = 0.4
+    Kp = 5
+    Ki = 0.2
+    Kd = 0.1
 
     # PID controller for omega
     omega = Kp*e + Ki*e_int + Kd*e_der

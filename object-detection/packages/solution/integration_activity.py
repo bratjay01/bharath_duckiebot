@@ -37,7 +37,7 @@ def filter_by_classes(pred_class: int) -> bool:
     # Right now, this returns True for every object's class
     # TODO: Change this to only return True for duckies!
     # In other words, returning False means that this prediction is ignored.
-    return True
+    return pred_class == 0
 
 
 def filter_by_scores(score: float) -> bool:
@@ -58,4 +58,11 @@ def filter_by_bboxes(bbox: Tuple[int, int, int, int]) -> bool:
                 This means the shape of bbox is (leftmost x pixel, topmost y, rightmost x, bottommost y)
     """
     # TODO: Like in the other cases, return False if the bbox should not be considered.
-    return True
+    width = bbox[2] - bbox[0]
+    height = bbox[3] - bbox[1]
+    
+    # Set a threshold for the minimum area of the bounding box
+    min_area_threshold = 1000
+    
+    # Return False if the area of the bounding box is below the threshold
+    return (width * height) >= min_area_threshold
